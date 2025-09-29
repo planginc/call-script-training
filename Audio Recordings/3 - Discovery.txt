@@ -1,0 +1,29 @@
+Read aloud in a warm, welcoming tone
+Speaker 1: What type of financial assistance are you looking for today? 
+Speaker 2: I need to lower my monthly payments. I need relief, and I need a way to pay this off faster than 20 years.
+Speaker 1: Understood. Just to confirm your employment status, your new job is permanent, Full-Time, and you're making $3,400.00 a month, is that correct? 
+Speaker 2: Yes, that's correct.
+Speaker 1: Great. Now, regarding your four credit card accounts, are you current or past due on those accounts?
+Speaker 2: I'm current, but just barely. I've been making minimum payments.
+Speaker 1: Can you tell me the total amount you are paying towards your unsecured debt each month?
+Speaker 2: It's about $750 a month total just in minimum payments.
+Speaker 1: Are you currently able to pay anything more than those monthly minimums?
+Speaker 2: No, $750 is all I can afford right now and I can barely afford that.
+Speaker 1: And how much do you have set aside in savings right now? 
+Speaker 2: I have maybe $200 in savings. 
+Speaker 1: Is that consistently what you keep in that account?
+Speaker 2: Sometimes it's less if I have an emergency pop up.
+Speaker 1: Do you have a lump sum of money available—perhaps from a future commission or a relative—that could help pay off a chunk of this debt?
+Speaker 2: No, nothing like that. My family is struggling too.
+Speaker 1: I appreciate you sharing the full picture. Lastly, have you looked into any other options for paying off your debt already?
+Speaker 2: I looked into getting a personal loan to consolidate, but my credit score dropped to about 580, so I was denied.
+Speaker 1: Michael, thanks for helping me to get a good understanding of your current financial situation. I’m going to confirm your information so that we can pull up your credit report with a soft inquiry through Experian. We will do a no cost credit analysis, which will allow me to recommend the best available options to help you resolve your debts. How does that sound? 
+Speaker 2: Sounds good.
+Speaker 1: Great, let’s get started! Could you please provide me with your physical address? 
+Speaker 2: 149 Main Street, Denver, Colorado 94590
+Speaker 1: Can you provide me with your date of birth? 
+Speaker 2: January 12, 1992
+Speaker 1: Lastly, can you provide me with your social?
+Speaker 2: 101 62 7654
+Speaker 1: Does ClearOne Advantage have your verbal authorization under the Fair Credit Reporting Act to obtain information from your personal credit report or other information from Experian to determine if you are a candidate for debt consolidation options and for fraud prevention purposes?
+Speaker 2: Yes
