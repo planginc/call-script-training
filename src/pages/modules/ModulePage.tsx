@@ -199,6 +199,36 @@ export const ModulePage: React.FC<ModulePageProps> = ({
             />
           </div>
         )}
+        
+        {module.id === 'five-options' && currentSubsectionData.id === 'complete-options-dialogue' && (
+          <div className="mb-6">
+            <AudioPlayer 
+              src="/Audio Recordings/6 - 5 Options.wav"
+              title="Sample Call Audio Recording"
+              className="max-w-2xl"
+            />
+          </div>
+        )}
+        
+        {module.id === 'program-explanation' && currentSubsectionData.id === 'sample-program-explanation' && (
+          <div className="mb-6">
+            <AudioPlayer 
+              src="/Audio Recordings/7 - Program Explanation.wav"
+              title="Sample Call Audio Recording"
+              className="max-w-2xl"
+            />
+          </div>
+        )}
+        
+        {module.id === 'pre-approval' && currentSubsectionData.id === 'sample-pre-approval' && (
+          <div className="mb-6">
+            <AudioPlayer 
+              src="/Audio Recordings/8 - Pre-Approval--Budget Instructions.wav"
+              title="Sample Call Audio Recording"
+              className="max-w-2xl"
+            />
+          </div>
+        )}
           
           {currentSubsectionData.content.map((block, index) => (
             <ContentBlock key={index} block={block} highlightTerm={highlightTerm} />

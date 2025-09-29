@@ -96,14 +96,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onMenuToggle, onNaviga
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
-            <div className="hidden sm:block">
-              <div className="text-sm text-gray-500">
-                Training Progress
-              </div>
-              <div className="text-xs text-gray-400">
-                3 of 7 modules completed
-              </div>
-            </div>
+            {/* Reserved for future user actions */}
           </div>
         </div>
       </div>

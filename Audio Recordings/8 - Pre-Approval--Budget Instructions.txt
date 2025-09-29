@@ -1,0 +1,25 @@
+Read aloud in a warm, reassuring, welcoming tone
+Speaker 1: Michael, thanks for going through that detailed budget analysis with me. Now, before I can submit your file for final pre-approval, I need to quickly run through a verification checklist. I need to gather your banking information and confirm a few personal details.
+Speaker 2: Okay, I have my account information ready.
+Speaker 1: Great. Can you please confirm the **routing number** and **account number** for the bank account you will be using for your settlement deposits? And for identity verification, what is your mother's maiden name?
+Speaker 2: The routing number is [555-6677-8], the account number is [88899911], and her maiden name is Miller.
+Speaker 1: Thank you. I also need to confirm your primary email address and physical address one last time. And do you have a secondary phone number we can have on file?
+Speaker 2: The email is [M.Thompson@webmail.com], the address is $\text{1247}$ Oak Street, Denver, Colorado, $\text{80202}$, and my secondary number is [720-555-1234].
+Speaker 1: Perfect. That completes the checklist. **(Pause for simulated internal process)**.
+Speaker 1: **Congratulations, Michael!** I just received your approval back from our underwriting department. We were able to get you qualified for the initial term we discussed. Based on the budget we just reviewed, this is going to be an outstanding fit for you financially!
+Speaker 2: That is fantastic news, Pam. I feel a huge weight lifted off my shoulders.
+Speaker 1: I'm so glad. We were able to approve you for a **$\text{36}$-month term**, which would put your payment at **$\text{\$400}$ per month**. A friendly reminder that this payment includes your membership into Legal Protection Services.
+Speaker 2: Yes, $\text{\$400}$ is absolutely doable for me.
+Speaker 1: Excellent. Now, we just need to schedule your deposits. Do you want to match your program deposits with your pay dates? Do you get paid bi-weekly, semi-monthly, or monthly?
+Speaker 2: I get paid bi-weekly.
+Speaker 1: Great. **FRAMING:** The last step of our process is to recap the most important terms of the program to make sure that we’ve explained all the details of the process. After we complete the recap, I will be walking you through your enrollment agreement. Do you have access to your email right now?
+Speaker 2: Yes, I'm on my computer, so I can access it immediately.
+Speaker 1: We will be using DocuSign to complete your enrollment agreement. Are you going to be using your phone or a computer to access your document?
+Speaker 2: A computer.
+Speaker 1: Perfect! Let’s start the recap... ***Go through Recap Script verbatim***.
+
+
+
+
+
+

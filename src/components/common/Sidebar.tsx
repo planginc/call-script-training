@@ -34,7 +34,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className={`
         fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0 lg:static lg:inset-0
+        lg:translate-x-0 lg:fixed lg:inset-y-0 lg:left-0 lg:shadow-none lg:border-r lg:border-gray-200
         max-h-screen overflow-y-auto
       `}>
         <div className="flex flex-col h-full">

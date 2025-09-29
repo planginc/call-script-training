@@ -40,7 +40,7 @@ function App() {
           />
           
           <main className="flex-1 lg:ml-64">
-            <div className="w-full px-6 py-6">
+            <div className="max-w-7xl px-6 py-6">
               <Routes>
                 <Route path="/" element={<Navigate to="/scripts?module=intro&subsection=0" replace />} />
                 <Route path="/scripts" element={<Scripts />} />
