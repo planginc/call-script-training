@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Search, 
   HelpCircle, 
   AlertTriangle,
   Target,
-  FileText
+  FileText,
+  Headphones
 } from 'lucide-react';
+import { CompleteCallModal } from '../audio/CompleteCallModal';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -19,6 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onClose, 
   onNavigate 
 }) => {
+  const [showCompleteCallModal, setShowCompleteCallModal] = useState(false);
 
   return (
     <>
@@ -63,6 +66,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <FileText className="h-5 w-5 mr-3" />
                   SCRIPTS
                 </Link>
+                <button
+                  onClick={() => {
+                    setShowCompleteCallModal(true);
+                    onClose();
+                  }}
+                  className="w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 transition-colors border border-gray-200"
+                >
+                  <Headphones className="h-4 w-4 mr-3" />
+                  Complete Call Recording
+                </button>
               </div>
 
               {/* Tools Section */}
@@ -110,6 +123,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </nav>
         </div>
       </div>
+
+      {/* Complete Call Modal */}
+      <CompleteCallModal
+        isOpen={showCompleteCallModal}
+        onClose={() => setShowCompleteCallModal(false)}
+      />
     </>
   );
 };

@@ -7,6 +7,7 @@ import {
 import { ContentBlock } from '../../components/script/ContentBlock';
 import { AudioPlayer } from '../../components/common/AudioPlayer';
 import { scriptContent } from '../../data/scriptContent';
+import { getCacheBustedUrl } from '../../data/audioPlaylist';
 
 interface ModulePageProps {
   currentModule: string;
@@ -203,7 +204,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
         {module.id === 'five-options' && currentSubsectionData.id === 'complete-options-dialogue' && (
           <div className="mb-6">
             <AudioPlayer 
-              src="/Audio Recordings/6 - 5 Options.wav"
+              src={getCacheBustedUrl("/Audio Recordings/6 - 5 Options.wav")}
               title="Sample Call Audio Recording"
               className="max-w-2xl"
             />

@@ -8,6 +8,7 @@ import {
 import { ContentBlock } from '../components/script/ContentBlock';
 import { AudioPlayer } from '../components/common/AudioPlayer';
 import { scriptContent } from '../data/scriptContent';
+import { getCacheBustedUrl } from '../data/audioPlaylist';
 
 export const Scripts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -271,13 +272,13 @@ export const Scripts: React.FC = () => {
                     />
                   )}
                   
-                  {currentModuleId === 'five-options' && currentSubsectionData?.id === 'complete-options-dialogue' && (
-                    <AudioPlayer 
-                      src="/Audio Recordings/6 - 5 Options.wav"
-                      title="Sample Call Audio Recording"
-                      className="max-w-2xl"
-                    />
-                  )}
+                {currentModuleId === 'five-options' && currentSubsectionData?.id === 'complete-options-dialogue' && (
+                  <AudioPlayer 
+                    src={getCacheBustedUrl("/Audio Recordings/6 - 5 Options.wav")}
+                    title="Sample Call Audio Recording"
+                    className="max-w-2xl"
+                  />
+                )}
                   
                   {currentModuleId === 'program-explanation' && currentSubsectionData?.id === 'sample-program-explanation' && (
                     <AudioPlayer 
