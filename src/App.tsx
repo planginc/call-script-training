@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './components/common/Header';
 import { Sidebar } from './components/common/Sidebar';
-import { ModulePage } from './pages/modules/ModulePage';
+import { Scripts } from './pages/Scripts';
 import { Glossary } from './pages/tools/Glossary';
 import { Flashcards } from './pages/tools/Flashcards';
 import { SearchPage } from './pages/tools/Search';
@@ -14,27 +14,9 @@ import { ComplianceCheckpointSimple as ComplianceCheckpoint } from './pages/tool
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [currentModule, setCurrentModule] = useState<string>('intro');
-  const [currentSubsection, setCurrentSubsection] = useState<number>(0);
 
   const handleMenuToggle = () => {
     setSidebarOpen(!sidebarOpen);
-  };
-
-  const handleModuleSelect = (moduleId: string) => {
-    setCurrentModule(moduleId);
-    setCurrentSubsection(0); // Reset to first subsection when selecting a module
-    setSidebarOpen(false);
-  };
-
-  const handleSubsectionSelect = (moduleId: string, subsectionIndex: number) => {
-    setCurrentModule(moduleId);
-    setCurrentSubsection(subsectionIndex);
-    setSidebarOpen(false);
-  };
-
-  const handleSubsectionChange = (subsectionIndex: number) => {
-    setCurrentSubsection(subsectionIndex);
   };
 
   const handleNavigate = (path: string) => {
@@ -54,27 +36,14 @@ function App() {
           <Sidebar
             isOpen={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
-            currentModule={currentModule}
-            currentSubsection={currentSubsection}
-            onModuleSelect={handleModuleSelect}
-            onSubsectionSelect={handleSubsectionSelect}
             onNavigate={handleNavigate}
           />
           
-          <main className="flex-1 lg:ml-80">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+          <main className="flex-1 lg:ml-64">
+            <div className="w-full px-6 py-6">
               <Routes>
-                <Route path="/" element={<Navigate to="/module/intro" replace />} />
-                <Route 
-                  path="/module/:moduleId" 
-                  element={
-                    <ModulePage 
-                      currentModule={currentModule}
-                      currentSubsection={currentSubsection}
-                      onSubsectionChange={handleSubsectionChange}
-                    />
-                  } 
-                />
+                <Route path="/" element={<Navigate to="/scripts?module=intro&subsection=0" replace />} />
+                <Route path="/scripts" element={<Scripts />} />
                 <Route path="/glossary" element={<Glossary />} />
                 <Route path="/flashcards" element={<Flashcards />} />
                 <Route path="/search" element={<SearchPage />} />
