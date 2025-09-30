@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { 
   RotateCcw, 
-  CheckCircle2, 
-  XCircle, 
   Eye, 
   EyeOff,
-  Volume2,
-  VolumeX,
-  Shuffle
+  Shuffle,
+  ArrowRight,
+  ArrowLeft
 } from 'lucide-react';
 
 interface Flashcard {
@@ -319,11 +317,9 @@ export const Flashcards: React.FC = () => {
   const [studyMode, setStudyMode] = useState<'all' | 'compliance' | 'script' | 'process' | 'legal' | 'objection'>('all');
   const [difficulty, setDifficulty] = useState<'all' | 'easy' | 'medium' | 'hard'>('all');
   const [isShuffled, setIsShuffled] = useState(false);
-  const [isAudioEnabled, setIsAudioEnabled] = useState(false);
   const [studyCards, setStudyCards] = useState<Flashcard[]>([]);
   const [sessionStats, setSessionStats] = useState({
-    correct: 0,
-    incorrect: 0,
+    studied: 0,
     total: 0
   });
 
@@ -368,28 +364,30 @@ export const Flashcards: React.FC = () => {
     setIsShuffled(!isShuffled);
   };
 
-  const markCorrect = () => {
+  const markStudied = () => {
     setSessionStats(prev => ({
       ...prev,
-      correct: prev.correct + 1,
+      studied: prev.studied + 1,
       total: prev.total + 1
     }));
     nextCard();
   };
 
-  const markIncorrect = () => {
-    setSessionStats(prev => ({
-      ...prev,
-      incorrect: prev.incorrect + 1,
-      total: prev.total + 1
-    }));
-    nextCard();
+  const markPrevious = () => {
+    if (currentCardIndex > 0) {
+      setSessionStats(prev => ({
+        ...prev,
+        studied: Math.max(0, prev.studied - 1)
+      }));
+      setCurrentCardIndex(currentCardIndex - 1);
+      setIsFlipped(false);
+    }
   };
 
   const resetSession = () => {
     setCurrentCardIndex(0);
     setIsFlipped(false);
-    setSessionStats({ correct: 0, incorrect: 0, total: 0 });
+    setSessionStats({ studied: 0, total: studyCards.length });
   };
 
   const getDifficultyColor = (difficulty: string) => {
@@ -457,20 +455,10 @@ export const Flashcards: React.FC = () => {
           <h1 className="text-2xl font-bold text-gray-900">Flashcards</h1>
           <div className="flex items-center space-x-3">
             <button
-              onClick={() => setIsAudioEnabled(!isAudioEnabled)}
-              className={`p-2 rounded-lg border ${
-                isAudioEnabled 
-                  ? 'bg-blue-100 border-blue-300 text-blue-600' 
-                  : 'bg-gray-100 border-gray-300 text-gray-600'
-              }`}
-            >
-              {isAudioEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
-            </button>
-            <button
               onClick={shuffleCards}
               className={`p-2 rounded-lg border ${
-                isShuffled
-                  ? 'bg-blue-100 border-blue-300 text-blue-600'
+                isShuffled 
+                  ? 'bg-blue-100 border-blue-300 text-blue-600' 
                   : 'bg-gray-100 border-gray-300 text-gray-600'
               }`}
             >
@@ -509,7 +497,7 @@ export const Flashcards: React.FC = () => {
         {/* Progress */}
         <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
           <span>Card {currentCardIndex + 1} of {studyCards.length}</span>
-          <span>{sessionStats.correct} correct, {sessionStats.incorrect} incorrect</span>
+          <span>{sessionStats.studied} completed</span>
         </div>
       </div>
 
@@ -549,68 +537,38 @@ export const Flashcards: React.FC = () => {
 
       {/* Controls */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+
+        <div className="flex items-center justify-center space-x-4">
           <button
-            onClick={prevCard}
+            onClick={markPrevious}
             disabled={currentCardIndex === 0}
-            className={`px-4 py-2 rounded-lg border ${
-              currentCardIndex === 0
-                ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
-            }`}
+            className="flex items-center px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 border border-gray-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            ← Previous
+            <ArrowLeft className="h-5 w-5 mr-2" />
+            Previous Card
           </button>
-
+          
           <button
-            onClick={nextCard}
-            disabled={currentCardIndex === studyCards.length - 1}
-            className={`px-4 py-2 rounded-lg border ${
-              currentCardIndex === studyCards.length - 1
-                ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
-            }`}
+            onClick={markStudied}
+            className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 border border-blue-600 font-medium"
           >
-            Next →
-          </button>
-        </div>
-
-        <div className="flex items-center space-x-3">
-          <button
-            onClick={markIncorrect}
-            className="flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 border border-red-200"
-          >
-            <XCircle className="h-4 w-4 mr-2" />
-            Incorrect
-          </button>
-          <button
-            onClick={markCorrect}
-            className="flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 border border-green-200"
-          >
-            <CheckCircle2 className="h-4 w-4 mr-2" />
-            Correct
+            <ArrowRight className="h-5 w-5 mr-2" />
+            Next Card
           </button>
         </div>
       </div>
 
       {/* Session Stats */}
-      {sessionStats.total > 0 && (
+      {(sessionStats.total > 0 || sessionStats.studied > 0) && (
         <div className="mt-6 bg-gray-50 rounded-lg p-4">
-          <h3 className="font-semibold text-gray-900 mb-2">Session Statistics</h3>
-          <div className="grid grid-cols-3 gap-4 text-center">
+          <div className="grid grid-cols-2 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-green-600">{sessionStats.correct}</div>
-              <div className="text-sm text-gray-600">Correct</div>
+              <div className="text-2xl font-bold text-blue-600">{sessionStats.studied}</div>
+              <div className="text-sm text-gray-600">Completed</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-red-600">{sessionStats.incorrect}</div>
-              <div className="text-sm text-gray-600">Incorrect</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-blue-600">
-                {Math.round((sessionStats.correct / sessionStats.total) * 100)}%
-              </div>
-              <div className="text-sm text-gray-600">Accuracy</div>
+              <div className="text-2xl font-bold text-gray-600">{studyCards.length - sessionStats.studied}</div>
+              <div className="text-sm text-gray-600">Remaining</div>
             </div>
           </div>
           <div className="mt-4 text-center">
@@ -619,7 +577,7 @@ export const Flashcards: React.FC = () => {
               className="flex items-center mx-auto px-4 py-2 text-sm text-gray-600 hover:text-gray-900"
             >
               <RotateCcw className="h-4 w-4 mr-2" />
-              Reset Session
+              Reset Progress
             </button>
           </div>
         </div>
