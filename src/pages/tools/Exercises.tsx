@@ -60,6 +60,22 @@ const exercises = [
 export const Exercises: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto">
+      {/* Sample Feature Disclaimer */}
+      <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-8 rounded-r-lg">
+        <div className="flex items-start">
+          <div className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0">⚠️</div>
+          <div>
+            <h3 className="text-sm font-semibold text-amber-800 mb-1">
+              Sample Features - Incomplete Demos
+            </h3>
+            <p className="text-sm text-amber-700">
+              These are samples of additional possibilities that can be built into a comprehensive training platform. 
+              These interactive exercises demonstrate how AI can create engaging, adaptive learning experiences that go far beyond static training materials.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">

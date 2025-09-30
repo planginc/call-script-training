@@ -435,6 +435,22 @@ export const Flashcards: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      {/* Sample Feature Disclaimer */}
+      <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+        <div className="flex items-start">
+          <div className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0">⚠️</div>
+          <div>
+            <h3 className="text-sm font-semibold text-amber-800 mb-1">
+              Sample Feature - Incomplete Demo
+            </h3>
+            <p className="text-sm text-amber-700">
+              This is a sample of additional possibilities that can be built into a comprehensive training platform. 
+              This flashcard system demonstrates how AI can create adaptive learning tools with spaced repetition and mastery tracking.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
         <div className="flex items-center justify-between mb-4">

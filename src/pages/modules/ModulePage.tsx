@@ -5,7 +5,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { ContentBlock } from '../../components/script/ContentBlock';
-import { AudioPlayer } from '../../components/common/AudioPlayer';
+import { EnhancedAudioPlayer } from '../../components/common/EnhancedAudioPlayer';
 import { scriptContent } from '../../data/scriptContent';
 import { getCacheBustedUrl } from '../../data/audioPlaylist';
 
@@ -53,8 +53,8 @@ export const ModulePage: React.FC<ModulePageProps> = ({
     const highlight = searchParams.get('highlight');
     if (highlight) {
       setHighlightTerm(highlight);
-      // Clear highlight after 5 seconds
-      const timer = setTimeout(() => setHighlightTerm(''), 5000);
+      // Clear highlight after 10 seconds (increased from 5)
+      const timer = setTimeout(() => setHighlightTerm(''), 10000);
       return () => clearTimeout(timer);
     }
   }, [searchParams]);
@@ -153,7 +153,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
           {/* Audio Player for Sample Call sections */}
           {module.id === 'intro' && currentSubsectionData.id === 'sample-call' && (
             <div className="mb-6">
-              <AudioPlayer 
+              <EnhancedAudioPlayer 
                 src="/Audio Recordings/1 - Intro.wav"
                 title="Sample Call Audio Recording"
                 className="max-w-2xl"
@@ -163,7 +163,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
           
           {module.id === 'understand-situation' && currentSubsectionData.id === 'sample-understand-situation' && (
             <div className="mb-6">
-              <AudioPlayer 
+              <EnhancedAudioPlayer 
                 src="/Audio Recordings/2 - Understand their situation.wav"
                 title="Sample Call Audio Recording"
                 className="max-w-2xl"
@@ -173,7 +173,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
           
         {module.id === 'discovery' && currentSubsectionData.id === 'sample-discovery' && (
           <div className="mb-6">
-            <AudioPlayer 
+            <EnhancedAudioPlayer 
               src="/Audio Recordings/3 - Discovery.wav"
               title="Sample Call Audio Recording"
               className="max-w-2xl"
@@ -183,7 +183,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
         
         {module.id === 'debt-verification' && currentSubsectionData.id === 'sample-debt-verification' && (
           <div className="mb-6">
-            <AudioPlayer 
+            <EnhancedAudioPlayer 
               src="/Audio Recordings/4 - Debt Verification.wav"
               title="Sample Call Audio Recording"
               className="max-w-2xl"
@@ -193,7 +193,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
         
         {module.id === 'credit-analysis' && currentSubsectionData.id === 'credit-analysis-dialogue' && (
           <div className="mb-6">
-            <AudioPlayer 
+            <EnhancedAudioPlayer 
               src="/Audio Recordings/5 - Credit Analysis.wav"
               title="Sample Call Audio Recording"
               className="max-w-2xl"
@@ -203,7 +203,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
         
         {module.id === 'five-options' && currentSubsectionData.id === 'complete-options-dialogue' && (
           <div className="mb-6">
-            <AudioPlayer 
+            <EnhancedAudioPlayer 
               src={getCacheBustedUrl("/Audio Recordings/6 - 5 Options.wav")}
               title="Sample Call Audio Recording"
               className="max-w-2xl"
@@ -213,7 +213,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
         
         {module.id === 'program-explanation' && currentSubsectionData.id === 'sample-program-explanation' && (
           <div className="mb-6">
-            <AudioPlayer 
+            <EnhancedAudioPlayer 
               src="/Audio Recordings/7 - Program Explanation.wav"
               title="Sample Call Audio Recording"
               className="max-w-2xl"
@@ -223,7 +223,7 @@ export const ModulePage: React.FC<ModulePageProps> = ({
         
         {module.id === 'pre-approval' && currentSubsectionData.id === 'sample-pre-approval' && (
           <div className="mb-6">
-            <AudioPlayer 
+            <EnhancedAudioPlayer 
               src="/Audio Recordings/8 - Pre-Approval--Budget Instructions.wav"
               title="Sample Call Audio Recording"
               className="max-w-2xl"

@@ -6,7 +6,7 @@ import {
   Phone
 } from 'lucide-react';
 import { ContentBlock } from '../components/script/ContentBlock';
-import { AudioPlayer } from '../components/common/AudioPlayer';
+import { EnhancedAudioPlayer } from '../components/common/EnhancedAudioPlayer';
 import { scriptContent } from '../data/scriptContent';
 import { getCacheBustedUrl } from '../data/audioPlaylist';
 
@@ -28,6 +28,9 @@ export const Scripts: React.FC = () => {
     const term = searchParams.get('highlight');
     if (term) {
       setHighlightTerm(term);
+      // Clear highlight after 10 seconds
+      const timer = setTimeout(() => setHighlightTerm(''), 10000);
+      return () => clearTimeout(timer);
     }
   }, [searchParams]);
 
@@ -233,7 +236,7 @@ export const Scripts: React.FC = () => {
                (currentModuleId === 'pre-approval' && currentSubsectionData?.id === 'sample-pre-approval') ? (
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
                   {currentModuleId === 'intro' && currentSubsectionData?.id === 'sample-call' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/1 - Intro.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"
@@ -241,7 +244,7 @@ export const Scripts: React.FC = () => {
                   )}
                   
                   {currentModuleId === 'understand-situation' && currentSubsectionData?.id === 'sample-understand-situation' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/2 - Understand their situation.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"
@@ -249,7 +252,7 @@ export const Scripts: React.FC = () => {
                   )}
                   
                   {currentModuleId === 'discovery' && currentSubsectionData?.id === 'sample-discovery' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/3 - Discovery.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"
@@ -257,7 +260,7 @@ export const Scripts: React.FC = () => {
                   )}
                   
                   {currentModuleId === 'debt-verification' && currentSubsectionData?.id === 'sample-debt-verification' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/4 - Debt Verification.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"
@@ -265,7 +268,7 @@ export const Scripts: React.FC = () => {
                   )}
                   
                   {currentModuleId === 'credit-analysis' && currentSubsectionData?.id === 'credit-analysis-dialogue' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/5 - Credit Analysis.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"
@@ -273,7 +276,7 @@ export const Scripts: React.FC = () => {
                   )}
                   
                 {currentModuleId === 'five-options' && currentSubsectionData?.id === 'complete-options-dialogue' && (
-                  <AudioPlayer 
+                  <EnhancedAudioPlayer 
                     src={getCacheBustedUrl("/Audio Recordings/6 - 5 Options.wav")}
                     title="Sample Call Audio Recording"
                     className="max-w-2xl"
@@ -281,7 +284,7 @@ export const Scripts: React.FC = () => {
                 )}
                   
                   {currentModuleId === 'program-explanation' && currentSubsectionData?.id === 'sample-program-explanation' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/7 - Program Explanation.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"
@@ -289,7 +292,7 @@ export const Scripts: React.FC = () => {
                   )}
                   
                   {currentModuleId === 'pre-approval' && currentSubsectionData?.id === 'sample-pre-approval' && (
-                    <AudioPlayer 
+                    <EnhancedAudioPlayer 
                       src="/Audio Recordings/8 - Pre-Approval--Budget Instructions.wav"
                       title="Sample Call Audio Recording"
                       className="max-w-2xl"

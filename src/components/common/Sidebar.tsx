@@ -78,10 +78,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </button>
               </div>
 
-              {/* Tools Section */}
+              {/* Sample Features Section */}
               <div className="space-y-2">
                 <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                  TOOLS
+                  SAMPLE FEATURES
                 </h3>
                 <Link
                   to="/glossary"

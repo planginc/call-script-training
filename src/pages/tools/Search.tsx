@@ -92,7 +92,7 @@ export const SearchPage: React.FC = () => {
                 {searchResults.map((result, index) => (
                   <Link
                     key={`${result.moduleId}-${result.subsectionId}-${index}`}
-                    to={`/module/${result.moduleId}?subsection=${result.subsectionId}`}
+                    to={`/scripts?module=${result.moduleId}&subsection=${result.sectionIndex}&highlight=${encodeURIComponent(searchQuery)}`}
                     className="block p-4 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
                     style={{
                       backgroundColor: result.moduleColor ? `${result.moduleColor}05` : undefined,
@@ -138,7 +138,7 @@ export const SearchPage: React.FC = () => {
             {scriptContent.map((script, index) => (
               <Link
                 key={script.id}
-                to={`/module/${script.id}`}
+                to={`/scripts?module=${script.id}&subsection=0`}
                 className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors"
                 style={{
                   backgroundColor: script.color ? `${script.color}10` : undefined,

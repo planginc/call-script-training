@@ -78,9 +78,9 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   const handleResultClick = (result: SearchResult) => {
-    if (result.type === 'script' && result.moduleId) {
-      // Navigate to the specific module and subsection
-      navigate(`/module/${result.moduleId}?subsection=${result.subsectionId}&highlight=${encodeURIComponent(searchQuery)}`);
+    if (result.type === 'script' && result.moduleId && typeof result.subsectionId === 'number') {
+      // Navigate to the scripts page with the specific module and subsection
+      navigate(`/scripts?module=${result.moduleId}&subsection=${result.subsectionId}&highlight=${encodeURIComponent(searchQuery)}`);
     } else if (result.type === 'compliance') {
       navigate('/glossary');
     }

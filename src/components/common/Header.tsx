@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Menu, BookOpen, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../hooks/useSearch';
 import { SearchResults } from './SearchResults';
 
@@ -13,6 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onMenuToggle, onNaviga
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearchResults, setShowSearchResults] = useState(false);
   const { searchResults } = useSearch(searchQuery);
+  const navigate = useNavigate();
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -21,10 +23,10 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onMenuToggle, onNaviga
   };
 
   const handleResultClick = (result: any) => {
-    if (result.type === 'script' && result.moduleId) {
-      window.location.href = `/module/${result.moduleId}?subsection=${result.subsectionId}&highlight=${encodeURIComponent(searchQuery)}`;
+    if (result.type === 'script' && result.moduleId && typeof result.subsectionId === 'number') {
+      navigate(`/scripts?module=${result.moduleId}&subsection=${result.subsectionId}&highlight=${encodeURIComponent(searchQuery)}`);
     } else if (result.type === 'compliance') {
-      window.location.href = '/glossary';
+      navigate('/glossary');
     }
     setShowSearchResults(false);
     setSearchQuery('');
