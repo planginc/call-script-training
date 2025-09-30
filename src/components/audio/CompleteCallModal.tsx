@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Play, Pause, SkipBack, SkipForward, Volume2, Settings } from 'lucide-react';
+import { X, Play, Pause, SkipBack, SkipForward, Settings } from 'lucide-react';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 import { audioPlaylist, formatTime, getCacheBustedUrl } from '../../data/audioPlaylist';
 
@@ -37,8 +37,7 @@ export const CompleteCallModal: React.FC<CompleteCallModalProps> = ({ isOpen, on
     handleAudioEnded,
     handlePlay,
     handlePause,
-    totalModules,
-    progressPercentage
+    totalModules
   } = useAudioPlayer({
     playlist: audioPlaylist,
     onModuleComplete: (moduleId) => {
@@ -62,7 +61,7 @@ export const CompleteCallModal: React.FC<CompleteCallModalProps> = ({ isOpen, on
         audioRef.current.load();
       }
     }
-  }, [isOpen, currentModule]);
+  }, [isOpen, currentModule, audioRef]);
 
   // Seek functionality
   const handleSeek = (newTime: number) => {
@@ -102,7 +101,7 @@ export const CompleteCallModal: React.FC<CompleteCallModalProps> = ({ isOpen, on
       document.removeEventListener('mousemove', handleGlobalMouseMove);
       document.removeEventListener('mouseup', handleGlobalMouseUp);
     };
-  }, [isDragging, dragTime, duration]);
+  }, [isDragging, dragTime, duration, handleSeek]);
 
   if (!isOpen) return null;
 

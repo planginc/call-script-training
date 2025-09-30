@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, GitBranch, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
+import { ArrowLeft, GitBranch, CheckCircle, RotateCcw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface DecisionNode {

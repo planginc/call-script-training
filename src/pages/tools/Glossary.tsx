@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, AlertTriangle, BookOpen, ExternalLink } from 'lucide-react';
+import { Search, AlertTriangle, BookOpen } from 'lucide-react';
 import { complianceRequirements, feeStructure } from '../../data/scriptContent';
 
 export const Glossary: React.FC = () => {
@@ -140,7 +140,7 @@ export const Glossary: React.FC = () => {
     }
   ];
 
-  const allTerms = [
+  const allTerms = useMemo(() => [
     ...complianceRequirements.map(req => ({
       term: req.phrase,
       definition: req.legal,
@@ -157,7 +157,7 @@ export const Glossary: React.FC = () => {
       importance: 'high' as const,
       category: 'fees'
     }))
-  ];
+  ], [complianceRequirements, legalTerms, processTerms, feeStructure]);
 
   const filteredTerms = useMemo(() => {
     let filtered = allTerms;

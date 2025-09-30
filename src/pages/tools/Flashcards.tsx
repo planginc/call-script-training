@@ -7,9 +7,7 @@ import {
   EyeOff,
   Volume2,
   VolumeX,
-  Shuffle,
-  Target,
-  Clock
+  Shuffle
 } from 'lucide-react';
 
 interface Flashcard {

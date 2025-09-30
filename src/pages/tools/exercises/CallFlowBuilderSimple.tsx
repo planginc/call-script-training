@@ -112,12 +112,6 @@ export const CallFlowBuilderSimple: React.FC = () => {
     setDraggedItem(null);
   };
 
-  const handleReorder = (fromIndex: number, toIndex: number) => {
-    const newDroppedSections = [...droppedSections];
-    const [removed] = newDroppedSections.splice(fromIndex, 1);
-    newDroppedSections.splice(toIndex, 0, removed);
-    setDroppedSections(newDroppedSections);
-  };
 
   const handleDropOnItem = (e: React.DragEvent, targetIndex: number) => {
     e.preventDefault();

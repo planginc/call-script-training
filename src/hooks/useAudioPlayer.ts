@@ -199,7 +199,7 @@ export const useAudioPlayer = ({ playlist, onModuleComplete, onAllComplete }: Us
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [togglePlayPause, skipTime, volume, setVolumeHandler, handleNext, handlePrevious]);
+  }, [togglePlayPause, skipTime, volume, setVolumeHandler, handleNext, handlePrevious, duration]);
 
   return {
     audioRef,
