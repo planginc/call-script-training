@@ -708,7 +708,12 @@ export const scriptContent: ScriptSection[] = [
             content: 'I agree and think you would be a great candidate for our Debt Settlement program to help you get out of debt and achieve your financial goals. Let me explain in more detail how the program works…'
           },
           {
-            type: 'regular',
+            type: 'compliance',
+            content: 'MANDATORY COMPLIANCE LANGUAGE:',
+            warning: 'CRITICAL: Must use exact phrase "voluntarily stop making payments" - NO SUBSTITUTIONS ALLOWED'
+          },
+          {
+            type: 'verbatim',
             content: 'STEP 1: "Due to your situation that we discussed earlier you voluntarily stop making payments to the creditors and will stop using the credit cards. You cannot get out of debt if you are still using the cards, right? Now, you may be thinking \'this will hurt my credit score\', and you are correct, it will have a negative impact to your credit score. You will then start making a new single monthly payment into an FDIC insured dedicated settlement account owned and controlled in your name. Your monthly program payments will accumulate in your settlement account and ultimately be used to pay your creditors and program fees as negotiations with your creditors occur."'
           },
           {
@@ -760,6 +765,11 @@ export const scriptContent: ScriptSection[] = [
           {
             type: 'analysis',
             content: '**STEP 1 - PAYMENT STOP & SETTLEMENT ACCOUNT:** Agent explains the first step with credit impact disclosure'
+          },
+          {
+            type: 'compliance',
+            content: '⚠️ MANDATORY COMPLIANCE ALERT ⚠️',
+            warning: 'MUST use exact phrase "voluntarily stop making payments" - This is legally required wording'
           },
           {
             type: 'regular',
@@ -975,6 +985,12 @@ export const complianceRequirements = [
     phrase: 'Does ClearOne Advantage have your verbal authorization under the Fair Credit Reporting Act to obtain information from your personal credit report or other information from Experian to determine if you are a candidate for debt consolidation options and for fraud prevention purposes?',
     context: 'Required before credit pull',
     legal: 'FCRA compliance - must obtain verbal YES'
+  },
+  {
+    id: 'voluntarily-stop-payments',
+    phrase: 'voluntarily stop making payments',
+    context: 'Must be used in debt settlement program explanation (STEP 1)',
+    legal: 'CRITICAL COMPLIANCE - Exact wording required for legal protection'
   }
 ];
 
