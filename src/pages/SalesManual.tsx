@@ -8,7 +8,8 @@ import {
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { salesManualSections, getSalesManualSection } from '../data/salesManualContent';
+import { salesManualSections } from '../data/salesManualSections';
+import { getSalesManualContent } from '../data/salesManualContent';
 
 export const SalesManual: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,32 +31,17 @@ export const SalesManual: React.FC = () => {
   const loadMarkdownContent = async (fileName: string) => {
     setLoading(true);
     try {
-      // For now, show placeholder content
-      // In production, this would load the actual markdown files
-      const placeholderContent = `# ${currentSection?.title || 'Section'}
-
-## Overview
-This section contains comprehensive training materials for account executives.
-
-## Content Status
-The markdown content for this section is being processed and will be available soon.
-
-## Section Details
-- **Section Number**: ${currentSection?.section || 'N/A'}
-- **Description**: ${currentSection?.description || 'No description available'}
-
-## Coming Soon
-- Detailed training content
-- Interactive examples
-- Compliance guidelines
-- Best practices
-
-> **Note**: This is a placeholder while the markdown content is being integrated into the system.`;
-      
-      setMarkdownContent(placeholderContent);
+      // Load the actual markdown file content
+      const content = getSalesManualContent(fileName);
+      if (content) {
+        setMarkdownContent(content);
+      } else {
+        console.error('Failed to load markdown content for:', fileName);
+        setMarkdownContent(`# ${currentSection?.title || 'Section'}\n\n## Content Loading Error\n\nUnable to load the markdown content for this section. Please try refreshing the page.`);
+      }
     } catch (error) {
       console.error('Error loading markdown content:', error);
-      setMarkdownContent('# Content Not Available\n\nThis section is currently being updated.');
+      setMarkdownContent(`# ${currentSection?.title || 'Section'}\n\n## Content Loading Error\n\nThere was an error loading the content for this section. Please try refreshing the page.`);
     } finally {
       setLoading(false);
     }
