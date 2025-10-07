@@ -6,7 +6,8 @@ import {
   AlertTriangle,
   Target,
   FileText,
-  Headphones
+  Headphones,
+  BookOpen
 } from 'lucide-react';
 import { CompleteCallModal } from '../audio/CompleteCallModal';
 
@@ -55,7 +56,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto">
             <div className="p-4">
-              {/* Scripts Section */}
+              {/* Training Sections */}
               <div className="space-y-2 mb-8">
                 <Link
                   to="/scripts"
@@ -64,7 +65,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   style={{ backgroundColor: '#3b82f6' }}
                 >
                   <FileText className="h-5 w-5 mr-3" />
-                  SCRIPTS
+                  CALL SCRIPT TRAINING
+                </Link>
+                <Link
+                  to="/sales-manual"
+                  onClick={() => onClose()}
+                  className="w-full flex items-center px-3 py-3 text-sm font-medium text-white rounded-md hover:bg-green-600 transition-colors"
+                  style={{ backgroundColor: '#059669' }}
+                >
+                  <BookOpen className="h-5 w-5 mr-3" />
+                  SALES MANUAL
                 </Link>
                 <button
                   onClick={() => {

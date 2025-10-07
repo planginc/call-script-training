@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Header } from './components/common/Header';
 import { Sidebar } from './components/common/Sidebar';
 import { Scripts } from './pages/Scripts';
+import { SalesManual } from './pages/SalesManual';
 import { Glossary } from './pages/tools/Glossary';
 import { Flashcards } from './pages/tools/Flashcards';
 import { SearchPage } from './pages/tools/Search';
@@ -44,6 +45,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Navigate to="/scripts?module=intro&subsection=0" replace />} />
                 <Route path="/scripts" element={<Scripts />} />
+                <Route path="/sales-manual" element={<SalesManual />} />
                 <Route path="/glossary" element={<Glossary />} />
                 <Route path="/flashcards" element={<Flashcards />} />
                 <Route path="/search" element={<SearchPage />} />

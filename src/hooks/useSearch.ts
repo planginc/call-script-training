@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { scriptContent, complianceRequirements } from '../data/scriptContent';
+import { salesManualSections } from '../data/salesManualContent';
 
 export const useSearch = (query: string) => {
   const searchResults = useMemo(() => {
@@ -43,6 +44,24 @@ export const useSearch = (query: string) => {
           context: req.context,
           legal: req.legal,
           id: req.id
+        });
+      }
+    });
+
+    // Search through sales manual content
+    salesManualSections.forEach(section => {
+      if (
+        section.title.toLowerCase().includes(searchTerm) ||
+        section.description.toLowerCase().includes(searchTerm) ||
+        section.content.toLowerCase().includes(searchTerm)
+      ) {
+        results.push({
+          type: 'sales-manual',
+          section: section.title,
+          description: section.description,
+          content: section.content,
+          sectionId: section.id,
+          sectionNumber: section.section
         });
       }
     });

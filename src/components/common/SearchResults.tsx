@@ -1,9 +1,9 @@
 import React from 'react';
-import { Search, FileText, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Search, FileText, AlertTriangle, ArrowRight, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface SearchResult {
-  type: 'script' | 'compliance';
+  type: 'script' | 'compliance' | 'sales-manual';
   module?: string;
   subsection?: string;
   content?: string;
@@ -15,6 +15,10 @@ interface SearchResult {
   context?: string;
   legal?: string;
   id?: string;
+  section?: string;
+  description?: string;
+  sectionId?: string;
+  sectionNumber?: string;
 }
 
 interface SearchResultsProps {
@@ -41,6 +45,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         return <FileText className="h-4 w-4 text-blue-600" />;
       case 'compliance':
         return <AlertTriangle className="h-4 w-4 text-red-600" />;
+      case 'sales-manual':
+        return <BookOpen className="h-4 w-4 text-green-600" />;
       default:
         return <Search className="h-4 w-4 text-gray-600" />;
     }
@@ -52,6 +58,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         return 'border-blue-200 bg-blue-50';
       case 'compliance':
         return 'border-red-200 bg-red-50';
+      case 'sales-manual':
+        return 'border-green-200 bg-green-50';
       default:
         return 'border-gray-200 bg-gray-50';
     }
@@ -83,6 +91,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       navigate(`/scripts?module=${result.moduleId}&subsection=${result.subsectionId}&highlight=${encodeURIComponent(searchQuery)}`);
     } else if (result.type === 'compliance') {
       navigate('/glossary');
+    } else if (result.type === 'sales-manual' && result.sectionId) {
+      navigate(`/sales-manual?section=${result.sectionId}`);
     }
     onResultClick(result);
   };
@@ -126,7 +136,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                       {highlightSearchTerm(truncateContent(result.content || ''), searchQuery)}
                     </p>
                   </>
-                ) : (
+                ) : result.type === 'compliance' ? (
                   <>
                     <div className="text-sm font-medium text-gray-900 mb-1">
                       {result.phrase}
@@ -136,6 +146,23 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                     </div>
                     <p className="text-sm text-gray-700">
                       {highlightSearchTerm(truncateContent(result.legal || ''), searchQuery)}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center space-x-2 mb-1">
+                      <span className="text-sm font-medium text-gray-900">
+                        {result.section}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        Section {result.sectionNumber}
+                      </span>
+                    </div>
+                    <div className="text-xs text-gray-500 mb-2">
+                      SALES MANUAL
+                    </div>
+                    <p className="text-sm text-gray-700">
+                      {highlightSearchTerm(truncateContent(result.description || ''), searchQuery)}
                     </p>
                   </>
                 )}
